@@ -1,16 +1,32 @@
 import streamlit as st
+from streamlit_option_menu import option_menu
 
 # Set up the main page layout and configuration
-st.set_page_config(page_title="Umesh Hanumanagouda - Data Scientist", layout="centered")
+st.set_page_config(page_title="Umesh Hanumanagouda - Data Scientist", layout="centered", page_icon="👨🏻‍💼")
+st.title("Welcome to My Data Science Portfolio")
 
-# Sidebar Navigation
-st.sidebar.title("Navigation")
-options = ["Home", "About Me", "Portfolio", "Blog", "Contact"]
-choice = st.sidebar.radio("Go to", options)
+# Option menu
+choice = option_menu(
+        menu_title='Navigation',  # If required
+        options=["Home", "About Me", "Portfolio", "Blog", "Contact"],
+        icons=['house-check', 'search-heart', 'person-workspace', 'pencil-square', 'telephone-outbound'],
+        default_index=0,
+        styles={
+            "container": {"padding": "0!important"},
+            "icon": {"color": "#E8751A", "font-size": "18px"},
+            "nav-link": {"font-size": "14px", "text-align": "left", "margin": "0px", "--hover-color": "#90D26D"},
+            "nav-link-selected": {"background-color": "green"},
+            },
+        orientation="horizontal"
+        )
+
+# # Sidebar Navigation
+# st.sidebar.title("Navigation")
+# options = ["Home", "About Me", "Portfolio", "Blog", "Contact"]
+# choice = st.sidebar.radio("Go to", options)
 
 # 1. Homepage
 if choice == "Home":
-    st.title("Welcome to My Data Science Portfolio")
     st.write("""
     Hi, I'm Umesh Hanumanagouda, an aspiring data scientist with a passion for discovering insights from data.
     """)
@@ -41,7 +57,7 @@ elif choice == "Portfolio":
     # Example of a project card
     st.subheader("Project 1: Stock price prediction")
     st.write("Brief description of the project.")
-    st.image("path/to/project_image.jpg", width=400)  # Optional: Add an image related to the project
+    # st.image("path/to/project_image.jpg", width=400)  # Optional: Add an image related to the project
     st.write("GitHub: [Link to the project repository](https://github.com/yourusername/project)")
     st.write("Demo: [Link to live demo or dashboard](https://yourdemo.com)")
 
