@@ -1,24 +1,26 @@
+from matplotlib import container
 import streamlit as st
 from streamlit_option_menu import option_menu
 
 # Set up the main page layout and configuration
-st.set_page_config(page_title="Umesh Hanumanagouda - Data Scientist", layout="centered", page_icon="👨🏻‍💼")
+st.set_page_config(page_title="Umesh Hanumanagouda", layout="wide", page_icon="👨🏻‍💼")
 st.title("Welcome to My Data Science Portfolio")
 
 # Option menu
-choice = option_menu(
-        menu_title='Navigation',  # If required
-        options=["Home", "About Me", "Portfolio", "Blog", "Contact"],
-        icons=['house-check', 'search-heart', 'person-workspace', 'pencil-square', 'telephone-outbound'],
-        default_index=0,
-        styles={
-            "container": {"padding": "0!important"},
-            "icon": {"color": "#E8751A", "font-size": "18px"},
-            "nav-link": {"font-size": "14px", "text-align": "left", "margin": "0px", "--hover-color": "#90D26D"},
-            "nav-link-selected": {"background-color": "green"},
-            },
-        orientation="horizontal"
-        )
+with st.container():
+    choice = option_menu(
+            menu_title=None,  # If required
+            options=["Home", "About Me", "Projects", "Blog", "Contact"],
+            icons=['house-check', 'search-heart', 'person-workspace', 'pencil-square', 'telephone-outbound'],
+            default_index=0,
+            styles={
+                "container": {"padding": "0!important"},
+                "icon": {"color": "#E8751A", "font-size": "18px"},
+                "nav-link": {"font-size": "14px", "text-align": "left", "margin": "0px", "--hover-color": "#90D26D"},
+                "nav-link-selected": {"background-color": "green"},
+                },
+            orientation="horizontal"
+            )
 
 # # Sidebar Navigation
 # st.sidebar.title("Navigation")
