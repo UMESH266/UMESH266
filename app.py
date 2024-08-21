@@ -1,6 +1,7 @@
 from matplotlib import container
 import streamlit as st
 from streamlit_option_menu import option_menu
+import base64
 
 # Set up the main page layout and configuration
 st.set_page_config(page_title="Umesh Hanumanagouda", layout="wide", page_icon="👨🏻‍💼")
@@ -10,7 +11,7 @@ st.title("Welcome to My Data Science Portfolio")
 with st.container():
     choice = option_menu(
             menu_title=None,  # If required
-            options=["Home", "About Me", "Projects", "Blog", "Contact"],
+            options=["Home", "About Me", "Projects", "Resume", "Contact"],
             icons=['house-check', 'search-heart', 'person-workspace', 'pencil-square', 'telephone-outbound'],
             default_index=0,
             styles={
@@ -48,9 +49,7 @@ elif choice == "About Me":
     st.write("- Programming: Python, R")
     st.write("- Libraries/Frameworks: TensorFlow, Scikit-learn, Pandas")
     st.write("- Tools: Jupyter, Git, Docker")
-    # Optionally, add a download button for your resume
-    st.download_button("Download Resume", data=open("./UMESH_HANUMANAGOUDA.pdf", "rb"), file_name="UMESH_HANUMANAGOUDA.pdf")
-
+        
 # 3. Portfolio Section
 elif choice == "Portfolio":
     st.title("Portfolio")
@@ -66,16 +65,10 @@ elif choice == "Portfolio":
     # Repeat for other projects
 
 # 4. Blog Section
-elif choice == "Blog":
-    st.title("Blog")
-    st.write("Welcome to my blog! Here, I share my thoughts, tutorials, and experiences in data science.")
-    
-    # Example of a blog post
-    st.subheader("Blog Post 1: [Post Title]")
-    st.write("Excerpt or introduction to the blog post.")
-    st.write("Read more: [Link to full post](/post_url)")
+elif choice == "Resume":
+    st.title("Resume") 
 
-    # Repeat for other blog posts
+    st.download_button(label="Download resume", file_name="UMESH_HANUMANAGOUDA.pdf", data="pdf")
 
 # 5. Contact Section
 elif choice == "Contact":
