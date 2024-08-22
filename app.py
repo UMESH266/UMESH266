@@ -134,7 +134,7 @@ elif choice == "Experience":
             # Example of a project card
             st.write("#### Project 1: Streamlit App Development for Fuel Bunk Operations")
             st.write("""
-                     Client: Axis Concept Construction Pvt. Ltd.
+                     Client: Axis Concept Construction Private Ltd., Bengaluru
 
                     Designed and developed an end-to-end Streamlit application using Python.
                     Scope includes real-time data capture and analysis for operations across 4 locations.
@@ -146,7 +146,7 @@ elif choice == "Experience":
                     """)
             st.write("Demo: [Link to app](https://maaya-autobahn.streamlit.app/)")
         with col2:
-            st.image("Maaya_app.png")
+            st.image("Maaya_app.png", use_column_width=True)
 
         # Maaya app project 
         col1, col2 = st.columns([2, 1])
@@ -154,41 +154,53 @@ elif choice == "Experience":
             # Example of a project card
             st.write("#### Project 2: Signature Hotel Feedback Analysis")
             st.write("""
-                     The Sentiment analysis of feedbacks of the Signatures Hotels, Vishakapatnam to identify actionable 
-                     insights. The data was cleaned and pre-processed to get a workable format suitable for the application
-                     of Natural Language processing techniques. The Exploratory data analysis using pandas, numpy, matplotlib,
-                     seaborn, and Sentiment analysis of feedback text using Natural Language Processing libraries such as nltk,
-                     BERT.
-	                 Analysis Dashboard prepared on Tableau and project deployed online using streamlit cloud platform.
+                     Client: The Signature Hotels, Vishakapatnam.
+                     
+                     The Sentiment analysis of feedbacks of the Signatures Hotels, Vishakapatnam
+                     to identify actionable insights. The data was cleaned and pre-processed to get
+                     a workable format suitable for the application of Natural Language processing techniques.
+                     The Exploratory data analysis using pandas, numpy, matplotlib, seaborn, and Sentiment analysis
+                     of feedback text using Natural Language Processing libraries such as nltk, BERT.
+                     
+                     Analysis Dashboard prepared using Tableau and project deployed online using streamlit cloud platform.
                     """)
             st.write("Demo: [Link to app](https://feedback-sentiment-analysis.streamlit.app/)")
         with col2:
-            st.image("Hotel_app.png")
+            st.image("Hotel_app.png", use_column_width=True)
 
     with st.expander("Internship"):
-        st.write("Here are some of the projects I've worked on:")
-        
+                
         # Example of a project card
-        st.subheader("Project 1: Stock price prediction")
-        st.write("Brief description of the project.")
-        # st.image("path/to/project_image.jpg", width=400)  # Optional: Add an image related to the project
-        st.write("GitHub: [Link to the project repository](https://github.com/yourusername/project)")
-        st.write("Demo: [Link to live demo or dashboard](https://yourdemo.com)")
+        col1, col2 = st.columns([2, 1])
+        with col1:
+            st.write("#### Stock price prediction")
+            st.write("""
+                        Employer: Aivariant, Bengaluru
+                     
+                        Stock price prediction, a team project to model price prediction using Data Science techniques.
+                        Built machine-learning models applicable to Time series data such as ARIMA, Prophet, and LSTM using 
+                        machine-learning techniques such as data collection, data cleaning/wrangling, exploratory data analysis, 
+                        and data visualization.
+                        
+                        Deployed the best-performing ARIMA model online using Streamlit and GitHub. It has given lowest RMSE value
+                        of 10.7 by the model.
+                    """)
+            st.write("GitHub: [Link to the project repository](https://github.com/UMESH266/P335-Stock-Price-prediction)")
+            st.write("Demo: [Link to app](https://p335-stock-price-prediction.streamlit.app/)")
+        with col2:
+            st.image("Stock_price.png", use_column_width=True)
 
     with st.expander("Educational projects"):
-        st.write("Here are some of the projects I've worked on:")
-        
-        # Example of a project card
-        st.subheader("Project 1: Stock price prediction")
-        st.write("Brief description of the project.")
-        # st.image("path/to/project_image.jpg", width=400)  # Optional: Add an image related to the project
-        st.write("GitHub: [Link to the project repository](https://github.com/yourusername/project)")
-        st.write("Demo: [Link to live demo or dashboard](https://yourdemo.com)")
+        st.write("You can find all the project repositories I've worked on Github through below link.")
+        st.write("GitHub: [Link to the project repositories](https://github.com/UMESH266?tab=repositories)")
+
+    with st.expander("Days at Coal India Limited"):
+        st.write("Coal India Experienc")
 
 # 4. Resume
 elif choice == "Resume": 
     col1, col2, col3 = st.columns(3)
-    col2.download_button(label="Download resume", file_name="UMESH_HANUMANAGOUDA.pdf", data="pdf")
+    col2.download_button(label="Download resume", file_name="UMESH_RESUME.pdf", data="pdf")
 
 # 5. Contact Section
 elif choice == "Contact":
