@@ -132,8 +132,18 @@ elif choice == "Experience":
         col1, col2 = st.columns([2, 1])
         with col1:
             # Example of a project card
-            st.write("#### Project 1: Data entry web app and Dashboard")
-            st.write("Brief description of the project.")
+            st.write("#### Project 1: Streamlit App Development for Fuel Bunk Operations")
+            st.write("""
+                     Client: Axis Concept Construction Pvt. Ltd.
+
+                    Designed and developed an end-to-end Streamlit application using Python.
+                    Scope includes real-time data capture and analysis for operations across 4 locations.
+                    Automated data fetching and integration for comprehensive data analytics.
+                    Created interactive dashboards for sales, expenses, and statistical analysis.
+                    Implemented cash flow and indent information tracking modules.
+                     
+                    Final presentation of data using power BI business tool on daily basis.
+                    """)
             st.write("Demo: [Link to app](https://maaya-autobahn.streamlit.app/)")
         with col2:
             st.image("Maaya_app.png")
@@ -142,11 +152,18 @@ elif choice == "Experience":
         col1, col2 = st.columns([2, 1])
         with col1:
             # Example of a project card
-            st.write("#### Project 1: Data entry web app and Dashboard")
-            st.write("Brief description of the project.")
-            st.write("Demo: [Link to app](https://maaya-autobahn.streamlit.app/)")
+            st.write("#### Project 2: Signature Hotel Feedback Analysis")
+            st.write("""
+                     The Sentiment analysis of feedbacks of the Signatures Hotels, Vishakapatnam to identify actionable 
+                     insights. The data was cleaned and pre-processed to get a workable format suitable for the application
+                     of Natural Language processing techniques. The Exploratory data analysis using pandas, numpy, matplotlib,
+                     seaborn, and Sentiment analysis of feedback text using Natural Language Processing libraries such as nltk,
+                     BERT.
+	                 Analysis Dashboard prepared on Tableau and project deployed online using streamlit cloud platform.
+                    """)
+            st.write("Demo: [Link to app](https://feedback-sentiment-analysis.streamlit.app/)")
         with col2:
-            st.image("Maaya_app.png")
+            st.image("Hotel_app.png")
 
     with st.expander("Internship"):
         st.write("Here are some of the projects I've worked on:")
