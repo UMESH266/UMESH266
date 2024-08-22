@@ -6,6 +6,29 @@ import base64
 # Set up the main page layout and configuration
 st.set_page_config(page_title="Umesh Hanumanagouda", layout="wide", page_icon="👨🏻‍💼")
 
+# # background image set-up
+# @st.cache_data
+# def get_base64_of_bin_file(bin_file):
+#     with open(bin_file, 'rb') as f:
+#         data = f.read()
+#     return base64.b64encode(data).decode()
+
+# def set_png_as_page_bg(png_file):
+#     bin_str = get_base64_of_bin_file(png_file)
+#     page_bg_img = '''
+#     <style>
+#     body {
+#     background-image: url("data:image/png;base64,%s");
+#     background-size: cover;
+#     }
+#     </style>
+#     ''' % bin_str
+    
+#     st.markdown(page_bg_img, unsafe_allow_html=True)
+#     return
+
+# set_png_as_page_bg('profile_pic.jpg')
+
 # Option menu
 col1, col2= st.columns([1, 2])
 with col1: 
@@ -14,7 +37,7 @@ with col1:
 with col2:
     choice = option_menu(
             menu_title=None,  # If required
-            options=["Home", "About", "Projects", "Resume", "Contact"],
+            options=["Home", "About", "Experience", "Resume", "Contact"],
             icons=['house-check', 'search-heart', 'person-workspace', 'pencil-square', 'telephone-outbound'],
             default_index=0,
             styles={
@@ -29,13 +52,12 @@ st.write("-----")
 
 # 1. Homepage
 if choice == "Home":
+    st.markdown("<h2 style='text-align: center;'>Hi, I'm Umesh Hanumanagouda</h2>", unsafe_allow_html=True)
+    st.markdown("<h6 style='text-align: center;'>Help discovering insights from data to make better and informed business decisions.</h6>", unsafe_allow_html=True)
+    st.write("---")
+    
     col1, col2 = st.columns(2)
     with col1:
-        st.markdown("## Hi, I'm Umesh Hanumanagouda")
-        
-        st.write("Help discovering insights from data to make better and informed business decisions.")
-        st.write("---")
-        
         st.markdown("#### :1234: Collect")
         st.write("""Coming from a background in Engineering, Management and freelance, I have theoretical and practical 
                  knowledge in data collection and management experience with various pipelines lik google forms, 
@@ -56,47 +78,100 @@ if choice == "Home":
         st.write("""Trained and experienced in deploying the best performing model in production by creating web apps on 
                  cloud platforms like streamlit, AWS etc.""")
 
-    # Profile pic    
-    with col2:
-        st.image("./profile_pic.jpg", use_column_width=True, )  # Add your image here
-        st.write("---")
         st.markdown("#### :robot_face: GenAI")
         st.write("""I have certification in Genrative AI from Udemy and Looking for opportunities to apply the learnings to solve 
                  and add value.""")
     
+    # Profile pic    
+    with col2:
+        st.image("./profile_pic.jpg", use_column_width=True, )  # Add your image here
+    st.write("----")
+
 # 2. About Me Section
 elif choice == "About":
-    st.title("About Me")
+    st.markdown("### Inspired by the Data and Coding")
     st.write("""
-    *Biography:*
-    - Background: Brief background about yourself.
-    - Education: Mention your educational qualifications.
-    - Skills: Python, SQL, Machine Learning, Data Visualization, etc.
-    """)
-    st.subheader("Skills")
-    st.write("- Programming: Python, R")
-    st.write("- Libraries/Frameworks: TensorFlow, Scikit-learn, Pandas")
-    st.write("- Tools: Jupyter, Git, Docker")
+                Umesh is motivated and attracted by the potential of quality data that can be used to make better and beneficial decisions. 
+                He experiments and works to make it easier for people to understand the code and use data efficiently. Umesh primarily uses 
+                Python to explore the Data and coding.
+             
+                Umesh has worked at Coal India Limited, Indian central public sector undertaking as Management Trainee, Assistant
+                Manager and Deputy Manager over the span of seven and half years where he explored various facets of data helping the
+                management to make better and efficient decisions. 
+             
+            """)
+    
+    with st.expander("Certifications"):
+        st.write("Data Science")
+        st.write("GenAI")
+        st.write("Python")
+        st.write("SQL")
+
+    with st.expander("Education"):
+        st.markdown("### Education")
+        st.write("Umesh graduated in Mechanical Engineering from the National Institute of Technology Karnataka (NITK), Surathkal - India.")
+        st.write("He has done schooling from Jawahar Navodaya Vidyalaya Koppal - Karnataka(India)")
+    
+    with st.expander("Skills"):
+        st.markdown("### Skills")
+        st.write("- Languages   : 	English (professional), Kannada (native), Hindi (limited)")
+        st.write("- Programming :   Python (professional), SQL (professional)")
+        st.write("- Libraries/Frameworks: TensorFlow, Scikit-learn, Pandas, Matplotlib, Seaborn, Streamlit, Flask")
+        st.write("- Tools: VS Code, PyCharm, Jupyter, Google colab, MySQL, Git & Github, Docker, MLflow")
+        st.write("- Visualization Tools: Tableau (professional), Power BI (professional)")
+        st.write("""- Machine Learning 		:	Linear regression, Logistic regression, Clustering, Principal Component Analysis,
+                    Algorithms			Association rules, Recommendation systems, Text mining, Naïve Bayes, Decision tree,
+                    k-Nearest Neighbour, Random Forest, Support Vector Machines, Artificial Neural 
+                    Networks, Convolutional Neural Networks, and Forecasting""")
         
 # 3. Portfolio Section
-elif choice == "Portfolio":
-    st.title("Portfolio")
-    st.write("Here are some of the projects I've worked on:")
-    
-    # Example of a project card
-    st.subheader("Project 1: Stock price prediction")
-    st.write("Brief description of the project.")
-    # st.image("path/to/project_image.jpg", width=400)  # Optional: Add an image related to the project
-    st.write("GitHub: [Link to the project repository](https://github.com/yourusername/project)")
-    st.write("Demo: [Link to live demo or dashboard](https://yourdemo.com)")
+elif choice == "Experience":
+    with st.expander("Freelance projects"):
+        
+        # Maaya app project 
+        col1, col2 = st.columns([2, 1])
+        with col1:
+            # Example of a project card
+            st.write("#### Project 1: Data entry web app and Dashboard")
+            st.write("Brief description of the project.")
+            st.write("Demo: [Link to app](https://maaya-autobahn.streamlit.app/)")
+        with col2:
+            st.image("Maaya_app.png")
 
-    # Repeat for other projects
+        # Maaya app project 
+        col1, col2 = st.columns([2, 1])
+        with col1:
+            # Example of a project card
+            st.write("#### Project 1: Data entry web app and Dashboard")
+            st.write("Brief description of the project.")
+            st.write("Demo: [Link to app](https://maaya-autobahn.streamlit.app/)")
+        with col2:
+            st.image("Maaya_app.png")
 
-# 4. Blog Section
-elif choice == "Resume":
-    st.title("Resume") 
+    with st.expander("Internship"):
+        st.write("Here are some of the projects I've worked on:")
+        
+        # Example of a project card
+        st.subheader("Project 1: Stock price prediction")
+        st.write("Brief description of the project.")
+        # st.image("path/to/project_image.jpg", width=400)  # Optional: Add an image related to the project
+        st.write("GitHub: [Link to the project repository](https://github.com/yourusername/project)")
+        st.write("Demo: [Link to live demo or dashboard](https://yourdemo.com)")
 
-    st.download_button(label="Download resume", file_name="UMESH_HANUMANAGOUDA.pdf", data="pdf")
+    with st.expander("Educational projects"):
+        st.write("Here are some of the projects I've worked on:")
+        
+        # Example of a project card
+        st.subheader("Project 1: Stock price prediction")
+        st.write("Brief description of the project.")
+        # st.image("path/to/project_image.jpg", width=400)  # Optional: Add an image related to the project
+        st.write("GitHub: [Link to the project repository](https://github.com/yourusername/project)")
+        st.write("Demo: [Link to live demo or dashboard](https://yourdemo.com)")
+
+# 4. Resume
+elif choice == "Resume": 
+    col1, col2, col3 = st.columns(3)
+    col2.download_button(label="Download resume", file_name="UMESH_HANUMANAGOUDA.pdf", data="pdf")
 
 # 5. Contact Section
 elif choice == "Contact":
