@@ -5,39 +5,67 @@ import base64
 
 # Set up the main page layout and configuration
 st.set_page_config(page_title="Umesh Hanumanagouda", layout="wide", page_icon="👨🏻‍💼")
-st.title("Welcome to My Data Science Portfolio")
 
 # Option menu
-with st.container():
+col1, col2= st.columns([1, 2])
+with col1: 
+    st.markdown("### UMESH HANUMANAGOUDA")
+
+with col2:
     choice = option_menu(
             menu_title=None,  # If required
-            options=["Home", "About Me", "Projects", "Resume", "Contact"],
+            options=["Home", "About", "Projects", "Resume", "Contact"],
             icons=['house-check', 'search-heart', 'person-workspace', 'pencil-square', 'telephone-outbound'],
             default_index=0,
             styles={
                 "container": {"padding": "0!important"},
-                "icon": {"color": "#E8751A", "font-size": "18px"},
+                "icon": {"color": "#E8751A", "font-size": "16px"},
                 "nav-link": {"font-size": "14px", "text-align": "left", "margin": "0px", "--hover-color": "#90D26D"},
                 "nav-link-selected": {"background-color": "green"},
                 },
             orientation="horizontal"
             )
-
-# # Sidebar Navigation
-# st.sidebar.title("Navigation")
-# options = ["Home", "About Me", "Portfolio", "Blog", "Contact"]
-# choice = st.sidebar.radio("Go to", options)
+st.write("-----")
 
 # 1. Homepage
 if choice == "Home":
-    st.write("""
-    Hi, I'm Umesh Hanumanagouda, an aspiring data scientist with a passion for discovering insights from data.
-    """)
-    st.image("./profile_pic.jpg", width=250)  # Add your image here
-    st.write("Use the sidebar to navigate through my site and learn more about me and my work.")
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown("## Hi, I'm Umesh Hanumanagouda")
+        
+        st.write("Help discovering insights from data to make better and informed business decisions.")
+        st.write("---")
+        
+        st.markdown("#### :1234: Collect")
+        st.write("""Coming from a background in Engineering, Management and freelance, I have theoretical and practical 
+                 knowledge in data collection and management experience with various pipelines lik google forms, 
+                 microsoft forms and api tools using python.""")
 
+        st.markdown("#### :broom: Process")
+        st.write("""
+                 I'm experienced in Data processing using python in which I have converted raw data into useful information. 
+                 The process involved cleaning, manipulating, analyzing, and interpreting data to extract insights that 
+                 can help organizations make better decisions, improve efficiency, and enhance customer experience. 
+            """)
+
+        st.markdown("#### :chart_with_upwards_trend: ML Modeling")
+        st.write(""" Trained to experment with different Machine Learning models to find best one based on 
+                 the performance metrics and hyperparameter tuning.""")
+
+        st.markdown("#### :factory: Deployment")
+        st.write("""Trained and experienced in deploying the best performing model in production by creating web apps on 
+                 cloud platforms like streamlit, AWS etc.""")
+
+    # Profile pic    
+    with col2:
+        st.image("./profile_pic.jpg", use_column_width=True, )  # Add your image here
+        st.write("---")
+        st.markdown("#### :robot_face: GenAI")
+        st.write("""I have certification in Genrative AI from Udemy and Looking for opportunities to apply the learnings to solve 
+                 and add value.""")
+    
 # 2. About Me Section
-elif choice == "About Me":
+elif choice == "About":
     st.title("About Me")
     st.write("""
     *Biography:*
