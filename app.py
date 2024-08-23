@@ -2,6 +2,7 @@ from matplotlib import container
 import streamlit as st
 from streamlit_option_menu import option_menu
 import base64
+import pandas as pd
 
 # Set up the main page layout and configuration
 st.set_page_config(page_title="Umesh Hanumanagouda", layout="wide", page_icon="👨🏻‍💼")
@@ -32,7 +33,7 @@ st.set_page_config(page_title="Umesh Hanumanagouda", layout="wide", page_icon="�
 # Option menu
 col1, col2= st.columns([1, 2])
 with col1: 
-    st.markdown("### UMESH HANUMANAGOUDA")
+    st.markdown("### UMESH")
 
 with col2:
     choice = option_menu(
@@ -195,7 +196,24 @@ elif choice == "Experience":
         st.write("GitHub: [Link to the project repositories](https://github.com/UMESH266?tab=repositories)")
 
     with st.expander("Days at Coal India Limited"):
-        st.write("Coal India Experienc")
+        st.write("""
+                    1. Deputy Manager                                                                                         
+                    Managed the role of Technical Secretary to the Head of the department successfully and was 
+                    In-charge of purchase repair tender cell with an outstanding performance rating for consecutive
+                    financial years.
+                    Published over 150 and finalized over 100 contracts per annum total valued at approximately 
+                    Rs 350 lakhs.
+                    Team achieved an annual coal production target of 10.5 MT.   
+
+                    2. Assistant Manager                                                                                       
+                    Successfully managed the role of In-charge, Purchase repair tender cell with outstanding 
+                    performance ratings. 
+                    Published over 150 and finalized over 100 contracts on average per annum and achieved zero 
+                    pending files for tender finalization.
+                    Assisted in the successful implementation of office software such as e-office and SAP in the
+                    Excavation department. 
+                    Team achieved 100% of the Annual Coal production target each financial year.  
+        """)
 
 # 4. Resume
 elif choice == "Resume": 
@@ -204,12 +222,19 @@ elif choice == "Resume":
 
 # 5. Contact Section
 elif choice == "Contact":
-    st.title("Contact Me")
-    st.write("Feel free to reach out to me!")
-    st.write("LinkedIn: [Your LinkedIn](https://www.linkedin.com/in/yourprofile)")
-    st.write("GitHub: [Your GitHub](https://github.com/yourusername)")
-    
+    st.write("### Get in Touch")
+    st.write("Feel free to reach out to me! through")
+    col1, col2, col3 = st.columns(3)
+    col1.write(":mailbox_with_mail: Mail: umeshgouda143@gmail.com")
+    col2.write(":link: LinkedIn: [My LinkedIn](https://www.linkedin.com/in/umesh266/)")
+    col3.write(":cat: GitHub: [My GitHub](https://github.com/UMESH266)")
+    st.write("---")
+
     # Contact form
+    st.write("### :postbox: Message box")
+    st.write("Write to me for any collaborations and suggestions to improve")
+    Message_df = pd.DataFrame()
+        
     with st.form(key="contact_form"):
         name = st.text_input("Name")
         email = st.text_input("Email")
@@ -218,7 +243,14 @@ elif choice == "Contact":
 
         if submit_button:
             st.write("Thank you! I'll get back to you soon.")
-
+            message = {}
+            message["Name"] = name
+            message["Mail ID"] = email
+            message["Message"] = message
+            msg_df = pd.DataFrame(message)
+            Message_df = pd.concat([Message_df, msg_df], ignore_index=True)
+            st.write(Message_df)
+            
 # Optional: Add Testimonials or Certifications Section
 elif choice == "Testimonials":
     st.title("Testimonials")
