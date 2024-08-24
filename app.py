@@ -8,30 +8,6 @@ from streamlit_pdf_viewer import pdf_viewer
 # Set up the main page layout and configuration
 st.set_page_config(page_title="Umesh Hanumanagouda", layout="wide", page_icon="👨🏻‍💼")
 
-# # background image set-up
-# @st.cache_data
-# def get_base64_of_bin_file(bin_file):
-#     with open(bin_file, 'rb') as f:
-#         data = f.read()
-#     return base64.b64encode(data).decode()
-
-# def set_png_as_page_bg(png_file):
-#     bin_str = get_base64_of_bin_file(png_file)
-#     page_bg_img = '''
-#     <style>
-#     body {
-#     background-image: url("data:image/png;base64,%s");
-#     background-size: cover;
-#     }
-#     </style>
-#     ''' % bin_str
-    
-#     st.markdown(page_bg_img, unsafe_allow_html=True)
-#     return
-
-# set_png_as_page_bg('profile_pic.jpg')
-
-# Option menu
 col1, col2= st.columns([1, 2])
 with col1: 
     st.markdown("### UMESH")
@@ -62,31 +38,32 @@ if choice == "Home":
     with col1:
         st.markdown("#### :1234: Collect")
         st.write("""Coming from a background in Engineering, Management and freelance, I have theoretical and practical 
-                 knowledge in data collection and management experience with various pipelines lik google forms, 
-                 microsoft forms and api tools using python.""")
+                 knowledge in data collection using various methods and api tools using python.""")
 
         st.markdown("#### :broom: Process")
         st.write("""
-                 I'm experienced in Data processing using python in which I have converted raw data into useful information. 
-                 The process involved cleaning, manipulating, analyzing, and interpreting data to extract insights that 
-                 can help organizations make better decisions, improve efficiency, and enhance customer experience. 
+                 I'm experienced in Data processing using python to converted raw data into useful information, which
+                 involves cleaning, manipulating, analyzing, and interpreting data to extract insights. 
             """)
 
         st.markdown("#### :chart_with_upwards_trend: ML Modeling")
         st.write(""" Trained to experment with different Machine Learning models to find best one based on 
                  the performance metrics and hyperparameter tuning.""")
+    
+    # Profile pic    
+    with col2:
+        st.image("./pic.jpg", use_column_width=True)  # Add your image here
 
+    col1, col2 = st.columns(2)
+    with col1:
         st.markdown("#### :factory: Deployment")
         st.write("""Trained and experienced in deploying the best performing model in production by creating web apps on 
                  cloud platforms like streamlit, AWS etc.""")
-
+    with col2:
         st.markdown("#### :robot_face: GenAI")
         st.write("""I have certification in Genrative AI from Udemy and Looking for opportunities to apply the learnings to solve 
                  and add value.""")
     
-    # Profile pic    
-    with col2:
-        st.image("./profile_pic.jpg", use_column_width=True, )  # Add your image here
     st.write("----")
 
 # 2. About Me Section
@@ -219,7 +196,14 @@ elif choice == "Experience":
 # 4. Resume
 elif choice == "Resume": 
     col1, col2, col3 = st.columns(3)
-    col3.download_button(label="Download resume", file_name="UMESH_RESUME.pdf", data="pdf")
+    with open("UMESH_RESUME.pdf", "rb") as file:
+        col3.download_button(
+             label="Download Resume",
+             data=file,
+             file_name="UMESH_RESUME.pdf",
+             mime="text/pdf"
+        )
+    
     pdf_viewer("UMESH_RESUME.pdf")
     
 # 5. Contact Section
