@@ -238,6 +238,9 @@ elif choice == "Contact":
     
     if "Message_df" not in st.session_state:
        st.session_state.Message_df = pd.DataFrame()
+
+    if "msg_df" not in st.session_state:
+       st.session_state.msg_df = pd.DataFrame()
         
     with st.form(key="contact_form"):
         name = st.text_input("Name")
@@ -245,25 +248,12 @@ elif choice == "Contact":
         text = st.text_area("Message")
         submit_button = st.form_submit_button("Send")
 
-    message = {}
     if submit_button:
-        st.write("Thank you! I'll get back to you soon.")
+        st.success("Thank you! I'll get back to you soon.")
         message = [{"Name": name,
                     "Mail ID": email,
                     "Message": text}]
-        st.write(message)
         
-        msg_df = pd.DataFrame(message)
-        st.session_state.Message_df = st.session_state.append(message)
-        st.write(st.session_state.Message_df)
-                
-# Optional: Add Testimonials or Certifications Section
-elif choice == "Testimonials":
-    st.title("Testimonials")
-    st.write("Here are some testimonials from people I've worked with.")
-    # Add testimonials as text or cards
-
-elif choice == "Certifications":
-    st.title("Certifications")
-    st.write("These are the certifications I've earned.")
-    # List your certifications with logos or images
+        st.session_state.msg_df = pd.DataFrame(message)
+        st.session_state.Message_df = st.session_state.Message_df._append(st.session_state.msg_df, ignore_index = True)
+        st.session_state.Message_df.to_csv("Info.csv")
