@@ -3,6 +3,7 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 import base64
 import pandas as pd
+from streamlit_pdf_viewer import pdf_viewer
 
 # Set up the main page layout and configuration
 st.set_page_config(page_title="Umesh Hanumanagouda", layout="wide", page_icon="👨🏻‍💼")
@@ -218,8 +219,9 @@ elif choice == "Experience":
 # 4. Resume
 elif choice == "Resume": 
     col1, col2, col3 = st.columns(3)
-    col2.download_button(label="Download resume", file_name="UMESH_RESUME.pdf", data="pdf")
-
+    col3.download_button(label="Download resume", file_name="UMESH_RESUME.pdf", data="pdf")
+    pdf_viewer("UMESH_RESUME.pdf")
+    
 # 5. Contact Section
 elif choice == "Contact":
     st.write("### Get in Touch")
@@ -233,24 +235,28 @@ elif choice == "Contact":
     # Contact form
     st.write("### :postbox: Message box")
     st.write("Write to me for any collaborations and suggestions to improve")
-    Message_df = pd.DataFrame()
+    
+    if "Message_df" not in st.session_state:
+       st.session_state.Message_df = pd.DataFrame()
         
     with st.form(key="contact_form"):
         name = st.text_input("Name")
         email = st.text_input("Email")
-        message = st.text_area("Message")
+        text = st.text_area("Message")
         submit_button = st.form_submit_button("Send")
 
-        if submit_button:
-            st.write("Thank you! I'll get back to you soon.")
-            message = {}
-            message["Name"] = name
-            message["Mail ID"] = email
-            message["Message"] = message
-            msg_df = pd.DataFrame(message)
-            Message_df = pd.concat([Message_df, msg_df], ignore_index=True)
-            st.write(Message_df)
-            
+    message = {}
+    if submit_button:
+        st.write("Thank you! I'll get back to you soon.")
+        message = [{"Name": name,
+                    "Mail ID": email,
+                    "Message": text}]
+        st.write(message)
+        
+        msg_df = pd.DataFrame(message)
+        st.session_state.Message_df = st.session_state.append(message)
+        st.write(st.session_state.Message_df)
+                
 # Optional: Add Testimonials or Certifications Section
 elif choice == "Testimonials":
     st.title("Testimonials")
