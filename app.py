@@ -2,9 +2,36 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 import pandas as pd
 from streamlit_pdf_viewer import pdf_viewer
+import base64
 
 # Set up the main page layout and configuration
 st.set_page_config(page_title="Umesh Hanumanagouda", layout="wide", page_icon="👨🏻‍💼")
+
+# Background image set up
+def set_bg_hack(main_bg):
+    '''
+    A function to unpack an image from root folder and set as bg.
+ 
+    Returns
+    -------
+    The background.
+    '''
+    # set bg name
+    main_bg_ext = "jpg"
+        
+    st.markdown(
+         f"""
+         <style>
+         .stApp {{
+             background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()});
+             background-size: cover
+         }}
+         </style>
+         """,
+         unsafe_allow_html=True
+     )
+
+set_bg_hack("data_bg2.jpg")
 
 col1, col2= st.columns([1, 2])
 with col1: 
