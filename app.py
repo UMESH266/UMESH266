@@ -55,29 +55,36 @@ st.write("-----")
 
 # 1. Homepage
 if choice == "Home":
-    st.markdown("<h2 style='text-align: center;'>Hi, I'm Umesh Hanumanagouda</h2>", unsafe_allow_html=True)
-    st.markdown("<h6 style='text-align: center;'>Help discovering insights from data to make better and informed business decisions.</h6>", unsafe_allow_html=True)
-    st.write("---")
+    col1, col2 = st.columns([2, 1])
+    with col1:
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
+        st.markdown("<h2 style='text-align: left;'>Hi,</h2>", unsafe_allow_html=True)
+        st.markdown("<h2 style='text-align: center;'>I'm Umesh Hanumanagouda</h2>", unsafe_allow_html=True)
+        st.write("")
+        st.markdown("<h6 style='text-align: center;'>Help discovering insights from data to make better and informed business decisions.</h6>", unsafe_allow_html=True)
+    # Profile pic    
+    with col2:
+        st.image("./Profile_pic2.png")  # Add your image here
     
-    col1, col2 = st.columns(2)
+    st.write("---")
+    col1, col2, col3 = st.columns(3)
     with col1:
         st.markdown("#### :1234: Collect")
         st.write("""Coming from a background in Engineering, Management and freelance, I have theoretical and practical 
                  knowledge in data collection using various methods and api tools using python.""")
-
+    with col2:
         st.markdown("#### :broom: Process")
         st.write("""
                  I'm experienced in Data processing using python to converted raw data into useful information, which
                  involves cleaning, manipulating, analyzing, and interpreting data to extract insights. 
             """)
-
+    with col3:
         st.markdown("#### :chart_with_upwards_trend: ML Modeling")
         st.write(""" Trained to experment with different Machine Learning models to find best one based on 
                  the performance metrics and hyperparameter tuning.""")
-    
-    # Profile pic    
-    with col2:
-        st.image("./pic.jpg", use_column_width=True)  # Add your image here
 
     col1, col2 = st.columns(2)
     with col1:
@@ -233,7 +240,7 @@ elif choice == "Resume":
     
 # 5. Contact Section
 elif choice == "Contact":
-    st.write("### Get in Touch")
+    st.write("### :handshake: Get in Touch")
     st.write("Feel free to reach out to me! through")
     col1, col2, col3 = st.columns(3)
     col1.write(":mailbox_with_mail: Mail: umeshgouda143@gmail.com")
@@ -243,7 +250,7 @@ elif choice == "Contact":
 
     # Contact form
     st.write("### :postbox: Message box")
-    st.write("Write to me for any collaborations and suggestions to improve")
+    st.write("Write to me for any collaborations / suggestions to improve")
     
     if "Message_df" not in st.session_state:
        st.session_state.Message_df = pd.DataFrame()
@@ -255,14 +262,18 @@ elif choice == "Contact":
         name = st.text_input("Name")
         email = st.text_input("Email")
         text = st.text_area("Message")
-        submit_button = st.form_submit_button("Send")
+        col1, col2, col3, col4 = st.columns(4)
+        submit_button = col4.form_submit_button("Send")
 
     if submit_button:
-        st.success("Thank you! I'll get back to you soon.")
-        message = [{"Name": name,
-                    "Mail ID": email,
-                    "Message": text}]
-        
-        st.session_state.msg_df = pd.DataFrame(message)
-        st.session_state.Message_df = st.session_state.Message_df._append(st.session_state.msg_df, ignore_index = True)
-        st.session_state.Message_df.to_csv("Info.csv")
+        if (name == "") or (email == "") or (text == ""):
+            st.error("Please fill all the fields")
+        else:
+            st.success("Thank you! I'll get back to you soon.")
+            message = [{"Name": name,
+                        "Mail ID": email,
+                        "Message": text}]
+            
+            st.session_state.msg_df = pd.DataFrame(message)
+            st.session_state.Message_df = st.session_state.Message_df._append(st.session_state.msg_df, ignore_index = True)
+            st.session_state.Message_df.to_csv("Info.csv")
