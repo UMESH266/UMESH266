@@ -61,7 +61,7 @@ if choice == "Home":
         st.write("")
         st.write("")
         st.write("")
-        st.markdown("<h2 style='text-align: left;'>Hi,</h2>", unsafe_allow_html=True)
+        st.markdown("<h2 style='text-align: center;'>Hi,</h2>", unsafe_allow_html=True)
         st.markdown("<h2 style='text-align: center;'>I'm Umesh Hanumanagouda</h2>", unsafe_allow_html=True)
         st.write("")
         st.markdown("<h6 style='text-align: center;'>Help discovering insights from data to make better and informed business decisions.</h6>", unsafe_allow_html=True)
@@ -277,3 +277,18 @@ elif choice == "Contact":
             st.session_state.msg_df = pd.DataFrame(message)
             st.session_state.Message_df = st.session_state.Message_df._append(st.session_state.msg_df, ignore_index = True)
             st.session_state.Message_df.to_csv("Info.csv")
+    
+    check = st.button("Admin only")
+    if check:
+        with st.form("Data view"):
+            user_name = st.text_input("User Name: ")
+            pw = st.text_input("Password: ", type="password")
+            submit = st.form_submit_button("Check")
+
+        if submit:
+            if (user_name == "Umesh") and (pw == "@Profile143,"):
+                st.write("Messages received: ")
+                data = pd.read_csv("info.csv")
+                st.write(data)
+            else:
+                st.warning("Invalid Username / Password")
