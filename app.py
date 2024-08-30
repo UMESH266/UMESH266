@@ -13,7 +13,6 @@ st.set_page_config(page_title="Umesh Hanumanagouda", layout="wide", page_icon="ğ
 # Main menu and footer hiding
 hide_setting = """
 <style>
-stHeader {visibility:hidden;}
 #MainMenu {visibility:hidden;}
 footer {visibility:hidden;}
 </style>
