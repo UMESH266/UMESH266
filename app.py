@@ -1,8 +1,11 @@
+from tkinter import S
 import streamlit as st
 from streamlit_option_menu import option_menu
 import pandas as pd
 from streamlit_pdf_viewer import pdf_viewer
 import base64
+from streamlit_gsheets import GSheetsConnection
+
 
 # Set up the main page layout and configuration
 st.set_page_config(page_title="Umesh Hanumanagouda", layout="wide", page_icon="👨🏻‍💼")
@@ -252,43 +255,33 @@ elif choice == "Contact":
     st.write("### :postbox: Message box")
     st.write("Write to me for any collaborations / suggestions to improve")
     
+    # google sheets connection
+    if 'conn' not in st.session_state:
+        st.session_state.conn = st.connection("gsheets", type=GSheetsConnection)
+
     if "Message_df" not in st.session_state:
-       st.session_state.Message_df = pd.DataFrame()
+       st.session_state.Message_df = st.session_state.conn.read(worksheet="Feedback")
 
     if "msg_df" not in st.session_state:
        st.session_state.msg_df = pd.DataFrame()
-        
-    with st.form(key="contact_form"):
+
+    with st.form(key="contact_form", clear_on_submit=True):
         name = st.text_input("Name")
         email = st.text_input("Email")
         text = st.text_area("Message")
         col1, col2, col3, col4 = st.columns(4)
         submit_button = col4.form_submit_button("Send")
 
-    if submit_button:
-        if (name == "") or (email == "") or (text == ""):
-            st.error("Please fill all the fields")
-        else:
-            st.success("Thank you! I'll get back to you soon.")
-            message = [{"Name": name,
-                        "Mail ID": email,
-                        "Message": text}]
-            
-            st.session_state.msg_df = pd.DataFrame(message)
-            st.session_state.Message_df = st.session_state.Message_df._append(st.session_state.msg_df, ignore_index = True)
-            st.session_state.Message_df.to_csv("Info.csv")
-    
-    check = st.button("Admin only")
-    if check:
-        with st.form("Data view"):
-            user_name = st.text_input("User Name: ")
-            pw = st.text_input("Password: ", type="password")
-            submit = st.form_submit_button("Check")
-
-        if submit:
-            if (user_name == "Umesh") and (pw == "@Profile143,"):
-                st.write("Messages received: ")
-                data = pd.read_csv("info.csv")
-                st.write(data)
+        if submit_button:
+            if (name == "") or (email == "") or (text == ""):
+                st.error("Please fill all the fields")
             else:
-                st.warning("Invalid Username / Password")
+                st.success(f"Thank you, {name}! I'll get back to you soon if any.")
+                
+                message = [{"Name": name,
+                            "Mail ID": email,
+                            "Message": text}]
+                
+                st.session_state.msg_df = pd.DataFrame(message)
+                st.session_state.Message_df = pd.concat([st.session_state.Message_df, st.session_state.msg_df], ignore_index = True)
+                st.session_state.conn.update(worksheet="Feedback", data=st.session_state.Message_df)
