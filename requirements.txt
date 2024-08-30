@@ -4,3 +4,4 @@ pandas
 streamlit-pdf-viewer
 pybase64
 st-gsheets-connection
+tkinter
