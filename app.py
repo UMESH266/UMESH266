@@ -10,6 +10,14 @@ from streamlit_gsheets import GSheetsConnection
 # Set up the main page layout and configuration
 st.set_page_config(page_title="Umesh Hanumanagouda", layout="wide", page_icon="👨🏻‍💼")
 
+# Main menu and footer hiding
+hide_setting = """
+<style>
+#MainMenu {visibility:hidden;}
+footer {visibility:hidden;}
+</style>
+"""
+st.markdown(hide_setting, unsafe_allow_html=True)
 # Background image set up
 def set_bg_hack(main_bg):
     '''
