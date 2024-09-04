@@ -279,7 +279,7 @@ elif choice == "Contact":
         st.session_state.conn = st.connection("gsheets", type=GSheetsConnection)
 
     if "Message_df" not in st.session_state:
-       st.session_state.Message_df = st.session_state.conn.read(spreadsheet="Profile feedback", worksheet="Feedback")
+       st.session_state.Message_df = st.session_state.conn.read(worksheet="Feedback")
 
     if "msg_df" not in st.session_state:
        st.session_state.msg_df = pd.DataFrame()
