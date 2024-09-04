@@ -1,4 +1,5 @@
 from tkinter import S
+from pyparsing import col
 import streamlit as st
 from streamlit_option_menu import option_menu
 import pandas as pd
@@ -124,10 +125,20 @@ elif choice == "About":
             """)
     
     with st.expander("Certifications"):
-        st.write("Data Science")
-        st.write("GenAI")
-        st.write("Python")
-        st.write("SQL")
+        col1, col2= st.columns(2)
+        with col1:
+            st.write("1. Data Science")
+            st.image("Data Science certificate.jpg")
+        with col2:
+            st.write("2. GenAI")
+            st.image("GenAI.jpg")
+        col3, col4 = st.columns(2)
+        with col3:
+            st.write("3. Python")
+            st.image("Python.png")
+        with col4:
+            st.write("4. SQL")
+            st.image("SQL.png")
 
     with st.expander("Education"):
         st.markdown("### Education")
