@@ -153,7 +153,11 @@ elif choice == "About":
             with col4_panel:
                 # st.write("4. SQL")
                 st.image("SQL.png", caption="SQL")
-
+        with st.columns(1):
+            col5_panel = st.container(border=True)
+            with col5_panel:
+                st.image("AWS_cloud_basic.jpg", caption="AWS Basics")
+                
     with st.expander("Education"):
         st.markdown("### Education")
         st.write("Umesh graduated in Mechanical Engineering from the National Institute of Technology Karnataka (NITK), Surathkal - India.")
