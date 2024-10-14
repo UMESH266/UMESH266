@@ -153,7 +153,7 @@ elif choice == "About":
             with col4_panel:
                 # st.write("4. SQL")
                 st.image("SQL.png", caption="SQL")
-        col5 = st.columns(1)
+        col5, col6 = st.columns(2)
         with col5:
             col5_panel = st.container(border=True)
             with col5_panel:
