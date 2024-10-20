@@ -254,7 +254,11 @@ elif choice == "Experience":
                     financial years.
                     Published over 150 and finalized over 100 contracts per annum total valued at approximately 
                     Rs 350 lakhs.
+                    
                     Team achieved an annual coal production target of 10.5 MT.   
+                    
+                    As a Technical Manager performed Technical and techno-commercial analysis of Hemm's performance to 
+                    manage Budget allocation, Spare parts, Manpower, and Repair works using Excel, E-office, and SAP.
 
                     2. Assistant Manager                                                                                       
                     Successfully managed the role of In-charge, Purchase repair tender cell with outstanding 
@@ -264,6 +268,12 @@ elif choice == "Experience":
                     Assisted in the successful implementation of office software such as e-office and SAP in the
                     Excavation department. 
                     Team achieved 100% of the Annual Coal production target each financial year.  
+                    
+                    Forecasting for HEMM spare parts indentation for procurement by analyzing HEMMs working hours 
+                    and past consumption of spare parts using traditional statistical methods.
+
+                    Preventive and predictive maintenance of HEMMs by analyzing and interpreting the working hours, 
+                    daily maintenance inspections, and log reports.   
         """)
 
 # 4. Resume
