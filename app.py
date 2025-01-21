@@ -43,7 +43,7 @@ def set_bg_hack(main_bg):
          unsafe_allow_html=True
      )
 
-set_bg_hack("Backgoround.jpg")
+set_bg_hack("Background.jpg")
 
 col1, col2= st.columns([1, 2])
 with col1: 
