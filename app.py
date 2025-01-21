@@ -29,7 +29,7 @@ def set_bg_hack(main_bg):
     The background.
     '''
     # set bg name
-    main_bg_ext = "jpg"
+    main_bg_ext = "png"
         
     st.markdown(
          f"""
@@ -43,7 +43,7 @@ def set_bg_hack(main_bg):
          unsafe_allow_html=True
      )
 
-set_bg_hack("data_bg2.jpg")
+set_bg_hack("backgoround.png")
 
 col1, col2= st.columns([1, 2])
 with col1: 
@@ -79,7 +79,7 @@ if choice == "Home":
         st.markdown("<h6 style='text-align: center;'>Help discovering insights from data to make better and informed business decisions.</h6>", unsafe_allow_html=True)
     # Profile pic    
     with col2:
-        st.image("./Profile_pic2.png")  # Add your image here
+        st.image("./Profile_pic.png")  # Add your image here
     
     st.write("---")
     col1, col2, col3 = st.columns(3)
