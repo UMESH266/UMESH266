@@ -112,15 +112,24 @@ if choice == "Home":
 
 # 2. About Me Section
 elif choice == "About":
-    st.markdown("### Inspired by the Data and Coding")
+    st.markdown("### Inspired by the ways of finding knowledge using the data")
     st.write("""
-                Umesh is motivated and attracted by the potential of quality data that can be used to make better and beneficial decisions. 
-                He experiments and works to make it easier for people to understand the code and use data efficiently. Umesh primarily uses 
-                Python to explore the Data and coding.
-             
-                Umesh has worked at Coal India Limited, Indian central public sector undertaking as Management Trainee, Assistant
-                Manager and Deputy Manager over the span of seven and half years where he explored various facets of data helping the
-                management to make better and efficient decisions. 
+                I am a passionate and results-driven Junior Data Scientist with a strong foundation in machine learning, data analysis, and predictive 
+                modeling. I collaborate with cross-functional teams to deliver data-driven solutions that drive business growth and efficiency. My 
+                expertise lies in fraud detection, customer analytics, credit scoring, and time-series forecasting, where I leverage machine learning 
+                and advanced algorithms like XGBoost, LightGBM, ARIMA, and LSTM to extract actionable insights from complex datasets.
+
+                With a background in Mechanical Engineering from the National Institute of Technology Karnataka, I bring a unique blend of technical 
+                and analytical skills to the table. My transition from Executive Manager at Coal India Limited to Data Science showcases my adaptability
+                 and commitment to continuous learning. I am certified in Data Science, Generative AI, and AWS Cloud, and I am always eager to explore 
+                 new technologies and methodologies to solve real-world problems.
+
+                I thrive in collaborative environments and have hands-on experience with tools like Python, SQL, Tableau, Power BI, and PySpark. My 
+                freelance projects, including developing data entry web apps and sentiment analysis dashboards, reflect my ability to deliver end-to-end 
+                solutions tailored to business needs.
+
+                When I'm not crunching numbers, you can find me honing my skills on Leetcode, and HackerRank, where I hold a 5-star Gold badge in both 
+                Python and SQL. I am excited about opportunities to contribute to innovative projects and make a meaningful impact through data science. 
              
             """)
     
