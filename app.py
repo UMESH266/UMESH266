@@ -112,82 +112,140 @@ if choice == "Home":
 
 # 2. About Me Section
 elif choice == "About":
-    st.markdown("### Inspired by the ways of finding knowledge using the data")
-    st.write("""
-                I am a passionate and results-driven Junior Data Scientist with a strong foundation in machine learning, data analysis, and predictive 
-                modeling. I collaborate with cross-functional teams to deliver data-driven solutions that drive business growth and efficiency. My 
-                expertise lies in fraud detection, customer analytics, credit scoring, and time-series forecasting, where I leverage machine learning 
-                and advanced algorithms like XGBoost, LightGBM, ARIMA, and LSTM to extract actionable insights from complex datasets.
+    section = option_menu(
+        menu_title='',  # If required
+        options=["Know me", "Certifications", "Education", "Skills"],
+        icons=['person-circle', 'file-text-fill', 'book-half', 'tools'],
+        default_index=0,
+        styles={
+            "container": {"padding": "0!important"},
+            "icon": {"color": "#E8751A", "font-size": "18px"},
+            "nav-link": {"font-size": "14px", "text-align": "left", "margin": "0px", "--hover-color": "#90D26D"},
+            "nav-link-selected": {"background-color": "green"},
+        },
+        orientation='horizontal'
+    )
+        
+    if section == "Know me":
+        st.markdown("### Inspired by the ways of finding knowledge using the data")
+        st.write("""
+                    I am a passionate and results-driven Junior Data Scientist with a strong foundation in machine learning, data analysis, and predictive 
+                    modeling. I collaborate with cross-functional teams to deliver data-driven solutions that drive business growth and efficiency. My 
+                    expertise lies in fraud detection, customer analytics, credit scoring, and time-series forecasting, where I leverage machine learning 
+                    and advanced algorithms like XGBoost, LightGBM, ARIMA, and LSTM to extract actionable insights from complex datasets.
 
-                With a background in Mechanical Engineering from the National Institute of Technology Karnataka, I bring a unique blend of technical 
-                and analytical skills to the table. My transition from Executive Manager at Coal India Limited to Data Science showcases my adaptability
-                 and commitment to continuous learning. I am certified in Data Science, Generative AI, and AWS Cloud, and I am always eager to explore 
-                 new technologies and methodologies to solve real-world problems.
+                    With a background in Mechanical Engineering from the National Institute of Technology Karnataka, I bring a unique blend of technical 
+                    and analytical skills to the table. My transition from Executive Manager at Coal India Limited to Data Science showcases my adaptability
+                    and commitment to continuous learning. I am certified in Data Science, Generative AI, and AWS Cloud, and I am always eager to explore 
+                    new technologies and methodologies to solve real-world problems.
 
-                I thrive in collaborative environments and have hands-on experience with tools like Python, SQL, Tableau, Power BI, and PySpark. My 
-                freelance projects, including developing data entry web apps and sentiment analysis dashboards, reflect my ability to deliver end-to-end 
-                solutions tailored to business needs.
+                    I thrive in collaborative environments and have hands-on experience with tools like Python, SQL, Tableau, Power BI, and PySpark. My 
+                    freelance projects, including developing data entry web apps and sentiment analysis dashboards, reflect my ability to deliver end-to-end 
+                    solutions tailored to business needs.
 
-                When I'm not crunching numbers, you can find me honing my skills on Leetcode, and HackerRank, where I hold a 5-star Gold badge in both 
-                Python and SQL. I am excited about opportunities to contribute to innovative projects and make a meaningful impact through data science. 
-             
-            """)
+                    When I'm not crunching numbers, you can find me honing my skills on Leetcode, and HackerRank, where I hold a 5-star Gold badge in both 
+                    Python and SQL. I am excited about opportunities to contribute to innovative projects and make a meaningful impact through data science. 
+                
+                """)
     
-    with st.expander("Certifications"):
+    elif section == "Certifications":
+        st.write("### Certificates and acclodes")
         col1, col2= st.columns(2)
         with col1:
-            panel = st.container(height=870, border=True)
+            panel = st.container(height=None, border=True) # 870
             with panel:
-                # st.write("1. Data Science")
+                st.write("1. Data Science")
                 st.image("Data Science certificate.jpg", caption="Data Science")
         with col2:
-            top = col2.container(height=425, border=True)
-            bottom = col2.container(height=425, border=True)
+            top = col2.container(height=None, border=True)
+            bottom = col2.container(height=None, border=True) # 425
             with top:
-                # st.write("2. GenAI")
+                st.write("2. GenAI")
                 st.image("GenAI.jpg", caption="GenAI")
 
             with bottom:
-                # st.write("3. NASSCOM")
+                st.write("3. NASSCOM")
                 st.image("NASSCOM DATA SCIENCE.jpg", caption="NASSCOM")
 
         col3, col4 = st.columns(2)
         with col3:
-            # st.write("3. Python")
             col3_panel = st.container(border=True)
             with col3_panel:
+                st.write("3. Python")
                 st.image("Python.png", caption="Python")
         with col4:
             col4_panel = st.container(border=True)
             with col4_panel:
-                # st.write("4. SQL")
+                st.write("4. SQL")
                 st.image("SQL.png", caption="SQL")
         col5, col6 = st.columns(2)
         with col5:
             col5_panel = st.container(border=True)
             with col5_panel:
+                st.write("5. AWS Basics")
                 st.image("AWS_cloud_basic.jpg", caption="AWS Basics")
 
-    with st.expander("Education"):
+    elif section == "Education":
         st.markdown("### Education")
-        st.write("Umesh graduated in Mechanical Engineering from the National Institute of Technology Karnataka (NITK), Surathkal - India.")
-        st.write("He has done schooling from Jawahar Navodaya Vidyalaya Koppal - Karnataka(India)")
+      
+        education_dict = {
+            "Education":['B. Tech (ME)', '12th - Science'],
+            "Institute":["NITK Surathkal, India", "JNVK Koppal, India"],
+            "Period":["2011-2015", "2009-2011"]
+        }
+
+        education_df = pd.DataFrame(education_dict, index=[1, 2])
+        st.table(education_df)
     
-    with st.expander("Skills"):
+    elif section == "Skills":
         st.markdown("### Skills")
-        st.write("- Languages   : 	English (professional), Kannada (native), Hindi (limited)")
-        st.write("- Programming :   Python (professional), SQL (professional)")
-        st.write("- Libraries/Frameworks: TensorFlow, Scikit-learn, Pandas, Matplotlib, Seaborn, Streamlit, Flask")
-        st.write("- Tools: VS Code, PyCharm, Jupyter, Google colab, MySQL, Git & Github, Docker, MLflow")
-        st.write("- Visualization Tools: Tableau (professional), Power BI (professional)")
-        st.write("""- Machine Learning 		:	Linear regression, Logistic regression, Clustering, Principal Component Analysis,
-                    Algorithms			Association rules, Recommendation systems, Text mining, Naïve Bayes, Decision tree,
-                    k-Nearest Neighbour, Random Forest, Support Vector Machines, Artificial Neural 
-                    Networks, Convolutional Neural Networks, and Forecasting""")
-        
+
+        skills_dict = {
+                "Programming" :     "Python (Pandas, NumPy, SciPy, Scikit-Learn, TensorFlow,  Keras,), SQL",
+                "AI / ML"		:	"Machine Learning, Neural Networks, GenAI basics",
+                "Visualization Tools": "Tableau, Power BI, Matplotlib, Seaborn, Grafana",
+                "MLOPs tools"	:	"Git, Github, Github Actions, DVC, Dagshub, MLflow, Airflow, Docker, Dockerhub",
+                "Tools": "VSCode, PyCharm, Google Colab, Jupyter Notebook, Databricks, MySQL",
+                "Cloud tool"	:	"AWS basics", 
+                "COMMUNICATION"	:	"English (Proficient), Kannada (Native), Hindi (Limited)"
+        }
+
+        skills_df = pd.DataFrame(skills_dict, index=['Details'])
+        st.table(skills_df.T)
+
 # 3. Portfolio Section
 elif choice == "Experience":
-    with st.expander("Freelance projects"):
+    experience = option_menu(
+        menu_title='',  # If required
+        options=["Current", "Coal India", "Freelancing", "Internship", "Educational"],
+        icons=['person-circle', 'file-text-fill', 'book-half', 'tools', 'book'],
+        default_index=0,
+        styles={
+            "container": {"padding": "0!important"},
+            "icon": {"color": "#E8751A", "font-size": "18px"},
+            "nav-link": {"font-size": "14px", "text-align": "left", "margin": "0px", "--hover-color": "#90D26D"},
+            "nav-link-selected": {"background-color": "green"},
+        },
+        orientation='horizontal'
+    )
+    if experience == "Current":
+        st.markdown("#### Junior Data Scientist")
+        st.write("""                 
+            @ Nowon Technologies, Bengaluru, India, since 04.2023\n
+        •	Worked with cross-functional teams to understand data needs and deliver solutions.\n
+        •	Assisted the Data Science team in analyzing 20+ medium to large data sets of different companies using Python to extract actionable insights 
+            which helped companies achieve 10 – 15% improvement in valuable customer holding, employee retention, future movements, and fraud reduction.\n
+        •	**Fraud detection**: Contributed to the team in developing projects to detect fraudulent transactions, anomalies in insurance claims, or credit card
+             usage using isolation forest and other supervised machine learning algorithms.\n
+        •	**Customer Analytics**: part of the team that used to find key features/factors causing customer churning, employees quitting, fraudulent 
+            transactions, and customer segmentation for targeted marketing using classification and clustering algorithms.\n 
+        •	**Credit scoring & risk**: Helped in developing systems to find the creditworthiness of customers and businesses. Also, prediction of the likelihood
+             of loan defaults using regression, classification, and various gradient boosting algorithms such as Xgboost, lightgbm, catboost etc.\n
+        •	**Forecasting**: Worked on forecasting and predictive models such as ARIMA, SARIMA, Prophet, and LSTM on time-series data to predict future 
+            movements and prices of the stocks/revenues of business.
+        ***
+        """)
+    elif experience== "Freelancing":
         
         # Maaya app project 
         col1, col2 = st.columns([2, 1])
@@ -206,6 +264,7 @@ elif choice == "Experience":
                     Final presentation of data using power BI business tool on daily basis.
                     """)
             st.write("Demo: [Link to app](https://maaya-autobahn.streamlit.app/)")
+        st.write("***")
         with col2:
             st.image("Maaya_app.png", use_column_width=True)
 
@@ -229,7 +288,7 @@ elif choice == "Experience":
         with col2:
             st.image("Hotel_app.png", use_column_width=True)
 
-    with st.expander("Internship"):
+    elif experience == "Internship":
                 
         # Example of a project card
         col1, col2 = st.columns([2, 1])
@@ -250,39 +309,46 @@ elif choice == "Experience":
             st.write("Demo: [Link to app](https://p335-stock-price-prediction.streamlit.app/)")
         with col2:
             st.image("Stock_price.png", use_column_width=True)
-
-    with st.expander("Educational projects"):
+        st.write("***")
+    elif experience == "Educational":
         st.write("You can find all the project repositories I've worked on Github through below link.")
         st.write("GitHub: [Link to the project repositories](https://github.com/UMESH266?tab=repositories)")
 
-    with st.expander("Days at Coal India Limited"):
+    elif experience=="Coal India":
         st.write("""
-                    1. Deputy Manager                                                                                         
-                    Managed the role of Technical Secretary to the Head of the department successfully and was 
+                    ***1. Deputy Manager*** 
+                                                                                                      
+                    • Managed the role of Technical Secretary to the Head of the department successfully and was 
                     In-charge of purchase repair tender cell with an outstanding performance rating for consecutive
                     financial years.
                     Published over 150 and finalized over 100 contracts per annum total valued at approximately 
                     Rs 350 lakhs.
                     
-                    Team achieved an annual coal production target of 10.5 MT.   
+                    • Team achieved an annual coal production target of 10.5 MT.   
                     
-                    As a Technical Manager performed Technical and techno-commercial analysis of Hemm's performance to 
+                    • As a Technical Manager performed Technical and techno-commercial analysis of Hemm's performance to 
                     manage Budget allocation, Spare parts, Manpower, and Repair works using Excel, E-office, and SAP.
 
-                    2. Assistant Manager                                                                                       
-                    Successfully managed the role of In-charge, Purchase repair tender cell with outstanding 
+                    *** 
+                    ***2. Assistant Manager*** 
+                                                                                              
+                    • Successfully managed the role of In-charge, Purchase repair tender cell with outstanding 
                     performance ratings. 
-                    Published over 150 and finalized over 100 contracts on average per annum and achieved zero 
+                 
+                    • Published over 150 and finalized over 100 contracts on average per annum and achieved zero 
                     pending files for tender finalization.
-                    Assisted in the successful implementation of office software such as e-office and SAP in the
+                 
+                    • Assisted in the successful implementation of office software such as e-office and SAP in the
                     Excavation department. 
-                    Team achieved 100% of the Annual Coal production target each financial year.  
+                 
+                    • Team achieved 100% of the Annual Coal production target each financial year.  
                     
-                    Forecasting for HEMM spare parts indentation for procurement by analyzing HEMMs working hours 
+                    • Forecasting for HEMM spare parts indentation for procurement by analyzing HEMMs working hours 
                     and past consumption of spare parts using traditional statistical methods.
 
-                    Preventive and predictive maintenance of HEMMs by analyzing and interpreting the working hours, 
+                    • Preventive and predictive maintenance of HEMMs by analyzing and interpreting the working hours, 
                     daily maintenance inspections, and log reports.   
+                 ***
         """)
 
 # 4. Resume
