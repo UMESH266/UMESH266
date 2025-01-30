@@ -127,7 +127,7 @@ elif choice == "About":
     )
         
     if section == "Know me":
-        st.markdown("### Inspired by the ways of finding knowledge using the data")
+        st.markdown("#### Intrigued by the information hidden in data and ways to extract it.")
         st.write("""
                     I am a passionate and results-driven Junior Data Scientist with a strong foundation in machine learning, data analysis, and predictive 
                     modeling. I collaborate with cross-functional teams to deliver data-driven solutions that drive business growth and efficiency. My 
