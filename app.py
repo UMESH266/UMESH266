@@ -362,7 +362,26 @@ elif choice == "Resume":
              mime="text/pdf"
         )
     
-    pdf_viewer("UMESH_RESUME.pdf")
+    annotations = [
+    {
+        "page": 1,
+        "x": 220,
+        "y": 155,
+        "height": 22,
+        "width": 65,
+        "color": "red"
+    },
+    {
+        "page": 1,
+        "x": 220,
+        "y": 155,
+        "height": 22,
+        "width": 65,
+        "color": "red",
+        "border": "dotted"
+    }
+    ]
+    pdf_viewer("UMESH_RESUME.pdf", annotations=annotations)
     
 # 5. Contact Section
 elif choice == "Contact":
