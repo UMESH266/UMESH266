@@ -364,21 +364,12 @@ elif choice == "Resume":
     
     annotations = [
     {
-        "page": 1,
-        "x": 220,
-        "y": 155,
-        "height": 22,
-        "width": 65,
-        "color": "red"
-    },
-    {
-        "page": 1,
-        "x": 220,
-        "y": 155,
-        "height": 22,
-        "width": 65,
-        "color": "red",
-        "border": "dotted"
+        # "page": 1,
+        # "x": 220,
+        # "y": 155,
+        # "height": 22,
+        # "width": 65,
+        # # "color": "red"
     }
     ]
     pdf_viewer("UMESH_RESUME.pdf", annotations=annotations)
